@@ -11,4 +11,7 @@ export function setupPresentation() {
         document.querySelector('#data-recoveries').textContent = numberFormat.format(latestData.recovered);
         document.querySelector('#data-deaths').textContent = numberFormat.format(latestData.deaths);
     });
+    Client.getLastUpdate().then(update => {
+       document.querySelector('#data-update').textContent = `${update.toLocaleDateString()}, ${update.toLocaleTimeString()}`;
+    });
 }

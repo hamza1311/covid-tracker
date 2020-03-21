@@ -4,9 +4,11 @@
     "scripts": {
         "start": "parcel app/index.html",
         "build": "parcel build app/index.html",
-        "deploy": "bash scripts/deploy.sh"
+        "upload": "bash scripts/upload.sh",
+        "deploy": "npm run build && npm run upload"
     },
     "devDependencies": {
+        "@babel/core": "^7.9.0",
         "parcel": "^1.12.4",
         "sass": "^1.26.3",
         "typescript": "^3.8.3"
@@ -14,5 +16,9 @@
     "browserslist": [
         "last 3 chrome versions",
         "last 3 firefox versions"
-    ]
+    ],
+    "dependencies": {
+        "@babel/plugin-proposal-class-properties": "^7.8.3",
+        "@babel/plugin-proposal-pipeline-operator": "^7.8.3"
+    }
 }

@@ -1,0 +1,8 @@
+{
+    "data-label-active":      "Cas actifs :",
+    "data-label-recoveries":  "Guérisons :",
+    "data-label-deaths":      "Morts :",
+    "data-label-last-update": "Dernière mise à jour :",
+    "data-source":            "Source des données :",
+    "source-code":            "Code Source"
+}
