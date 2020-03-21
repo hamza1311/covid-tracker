@@ -2,7 +2,7 @@ import { LatestData } from "./models";
 
 export module Client {
 
-    const API_URL = 'http://coronavirus-tracker-api.herokuapp.com/v2/latest';
+    const API_URL = 'https://coronavirus-tracker-api.herokuapp.com/v2/latest';
 
     /**
      * Returns a {@link Promise} of {@link LatestData}
