@@ -1,0 +1,165 @@
+<!--
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+-->
+
+<!doctype html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+
+            :root {
+                font-family: 'Helvetica', sans-serif;
+            }
+
+            html, body {
+                height: 100%;
+            }
+
+            @media (min-width: 768px) {
+                #container-data {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    align-items: center;
+
+                    width: 100%;
+                    height: 90%;
+                }
+            }
+
+            @media (max-width: 768px) {
+                #container-data {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+
+                    width: 100%;
+                    height: 90%;
+                }
+
+                #container-data * {
+                    margin-left: 0 !important;
+                }
+            }
+
+            #container-data div:not(:first-child) {
+                margin-left: 1em;
+            }
+
+            #container-data div span:last-child {
+                font-weight: bold;
+            }
+
+            #container-footer {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+
+                font-size: 9px;
+                font-family: monospace;
+
+                height: 10%;
+            }
+
+            a { color: black; }
+            a:hover { color: dimgray; }
+        </style>
+
+        <link rel="icon" href="favicon.ico">
+
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+        <script src="js/jsi18n.js"></script>
+        <script type="application/javascript">
+            const langFr = {
+                'data-label-active': 'Cas actifs :',
+                'data-label-recoveries': 'Guérisons :',
+                'data-label-deaths': 'Morts :',
+            };
+
+            jsI18n.addLocale('fr', langFr);
+
+            jsI18n.detectLanguage (
+                (locale) => { jsI18n.setLocale(locale); },
+                () => {}
+            );
+        </script>
+
+        <title>COVIDTracker</title>
+    </head>
+
+    <body onload="jsI18n.processPage()">
+
+        <div id="container-data">
+
+            <div id="active">
+                <span id="label-active" data-trans="data-label-active">Active cases :&hairsp;</span>
+
+                <span id="data-active"></span>
+            </div>
+
+            <div id="recoveries">
+                <span id="label-recoveries" data-trans="data-label-recoveries">Recoveries :&hairsp;</span>
+
+                <span id="data-recoveries"></span>
+            </div>
+
+            <div id="deaths">
+                <span id="label-deaths" data-trans="data-label-deaths">Deaths :&hairsp;</span>
+
+                <span id="data-deaths"></span>
+            </div>
+
+        </div>
+
+        <div id="container-footer">
+
+            <span id="footer-api-link">
+                Source :
+                <a href="https://github.com/ExpDev07/coronavirus-tracker-api">https://github.com/ExpDev07/coronavirus-tracker-api</a>
+                |
+                Version 1.1
+                |
+                2020 Benjamin Dupont
+            </span>
+
+        </div>
+
+        <!--suppress JSUnresolvedVariable -->
+        <script>
+            const API_URL = 'https://coronavirus-tracker-api.herokuapp.com/v2/latest';
+
+            const numberFormat = new Intl.NumberFormat('en-EN');
+
+            fetch(new Request(API_URL, { method: 'GET' }))
+               .then(async (response) => {
+                   const json = await response.json();
+
+                   document.querySelector('#data-active').innerText = numberFormat.format(json.latest.confirmed);
+                   document.querySelector('#data-recoveries').innerText = numberFormat.format(json.latest.recovered);
+                   document.querySelector('#data-deaths').innerText = numberFormat.format(json.latest.deaths);
+               });
+
+        </script>
+
+    </body>
+
+</html>

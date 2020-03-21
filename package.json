@@ -1,0 +1,16 @@
+{
+    "name": "covid-tracker",
+    "version": "1.1.0",
+    "scripts": {
+        "start": "parcel app/index.html",
+        "build": "parcel build app/index.html",
+        "deploy": "bash scripts/deploy.sh"
+    },
+    "devDependencies": {
+        "parcel": "^1.12.4"
+    },
+    "browserslist": [
+        "last 3 chrome versions",
+        "last 3 firefox versions"
+    ]
+}
