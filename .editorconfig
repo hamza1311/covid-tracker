@@ -11,3 +11,6 @@ tab_width = 4
 
 [*.json]
 indent_size = 4
+
+[*.ts]
+ij_typescript_spaces_within_imports = true

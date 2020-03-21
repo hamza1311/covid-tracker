@@ -75,7 +75,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
             </span>
 
             <span id="footer-info">
-                Version 1.1
+                Version 1.2
                 |
                 2020 Benjamin Dupont
                 |
@@ -84,22 +84,8 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
         </div>
 
-        <!--suppress JSUnresolvedVariable -->
-        <script>
-            const API_URL = 'https://coronavirus-tracker-api.herokuapp.com/v2/latest';
-
-            const numberFormat = new Intl.NumberFormat('en-EN');
-
-            fetch(new Request(API_URL, { method: 'GET' }))
-               .then(async (response) => {
-                   const json = await response.json();
-
-                   document.querySelector('#data-active').innerText = numberFormat.format(json.latest.confirmed);
-                   document.querySelector('#data-recoveries').innerText = numberFormat.format(json.latest.recovered);
-                   document.querySelector('#data-deaths').innerText = numberFormat.format(json.latest.deaths);
-               });
-
-        </script>
+        <!-- Main application script -->
+        <script src="ts/runtime.ts"></script>
 
     </body>
 
