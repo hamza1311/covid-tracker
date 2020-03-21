@@ -6,6 +6,14 @@
 :root {
     font-family: 'Helvetica', sans-serif;
     font-size: 20px;
+
+    @media (prefers-color-scheme: dark) {
+        background-color: black;
+        color: white;
+
+        a { color: white; }
+        a:hover { color: dimgray; }
+    }
 }
 
 html, body {
@@ -40,13 +48,16 @@ html, body {
     }
 }
 
-#container-data div:not(:first-child) {
-    margin-left: 1em;
+#container-data {
+    & div:not(:first-child) {
+        margin-left: 1em;
+    }
+
+    & div span:last-child {
+        font-weight: bold;
+    }
 }
 
-#container-data div span:last-child {
-    font-weight: bold;
-}
 
 #container-footer {
     display: flex;
@@ -61,10 +72,10 @@ html, body {
     font-family: monospace;
 
     height: 15vh;
-}
 
-#container-footer span:nth-child(2) {
-    margin-top: 1em;
+    & span:nth-child(2) {
+        margin-top: 1em;
+    }
 }
 
 a { color: black; }
