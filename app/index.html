@@ -14,7 +14,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 -->
 
 <!doctype html>
-<html lang="fr">
+<html lang="en">
     <head>
         <meta charset="UTF-8">
 
@@ -31,21 +31,45 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
         <div id="container-data">
 
             <div id="active">
-                <span id="label-active" data-trans="data-label-active">Active cases :</span>
+                <img src="assets/virus.svg" alt="Cases">
 
-                <span id="data-active"></span>
+                <div>
+                    <span id="label-active" data-trans="data-label-active">Active cases</span>
+
+                    <span id="data-active"></span>
+                </div>
             </div>
 
             <div id="recoveries">
-                <span id="label-recoveries" data-trans="data-label-recoveries">Recoveries :</span>
+                <img src="assets/smile.svg" alt="Cases">
 
-                <span id="data-recoveries"></span>
+                <div>
+                    <span id="label-recoveries" data-trans="data-label-recoveries">Recoveries</span>
+
+                    <span id="data-recoveries"></span>
+                </div>
             </div>
 
             <div id="deaths">
-                <span id="label-deaths" data-trans="data-label-deaths">Deaths :</span>
+                <img src="assets/death.svg" alt="Deaths">
 
-                <span id="data-deaths"></span>
+                <div>
+                    <span id="label-deaths" data-trans="data-label-deaths">Deaths</span>
+
+                    <span id="data-deaths"></span>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="container-location-switcher">
+
+            <div id="country-switcher">
+                <label for="select-country" id="label-country"></label>
+
+                <select name="select-country" id="select-country">
+                    <option data-trans="country-selection-entire-world">XX - Entire World</option>
+                </select>
             </div>
 
         </div>
@@ -66,11 +90,18 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
             </span>
 
             <span id="footer-info">
-                Version 1.3
+                Version 1.4
                 |
                 2020 Benjamin Dupont
                 |
                 <a href="https://github.com/Benjozork/covid-tracker" data-trans="source-code">Source Code</a>
+            </span>
+
+            <span>
+                <span data-trans="footer-icons-attr-first">Icons made by</span>
+                <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a>
+                <span data-trans="footer-icons-attr-second">from</span>
+                <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
             </span>
 
         </div>

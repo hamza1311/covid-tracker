@@ -26,16 +26,15 @@ export module Client {
     }
 
     /**
-     * Returns a {@link Promise} of {@link LatestData} for the location with the given country code
+     * Returns a {@link Promise} of {@link LatestData} for the locations with the given country code
      *
      * @author Benjozork
      */
-    export function getLocation(countryCode: string): Promise<Location[]> {
+    export function getLocation(countryCode: string): Promise<Location> {
         const request = new Request(`${API_URL}/locations?country_code=${countryCode}`, { method: 'GET' });
 
         return fetch(request)
             .then(response => response.json())
-            .then(json => json['locations'])
     }
 
 }

@@ -1,11 +1,12 @@
 {
     "name": "covid-tracker",
-    "version": "1.1.0",
+    "version": "1.4.0",
     "scripts": {
         "start": "parcel app/index.html",
         "build": "parcel build app/index.html",
+        "clean": "bash scripts/clean.sh",
         "upload": "bash scripts/upload.sh",
-        "deploy": "npm run build && npm run upload"
+        "deploy": "npm run clean && npm run build && npm run upload"
     },
     "devDependencies": {
         "@babel/core": "^7.9.0",

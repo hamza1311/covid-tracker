@@ -1,4 +1,4 @@
-import JsI18n from '../js/jsi18n';
+import JsI18n from '../lib/jsi18n';
 
 import fr from '../i18n/fr.json';
 

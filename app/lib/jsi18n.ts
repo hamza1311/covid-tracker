@@ -34,16 +34,13 @@ export default class JsI18n {
 
     /**
      * Current locale
-     *
-     * @type {string}
      */
-    #locale = "";
+    private locale = "";
+
     /**
      * Available locales
-     *
-     * @type {object[]}
      */
-    #locales = [];
+    private locales: object[] = [];
 
     /**
      * Method for automatically detecting the language, does not work in every browser.
@@ -52,12 +49,12 @@ export default class JsI18n {
      * @param {function(): void} errorCB
     */
     detectLanguage(successCB, errorCB) {
-        // noinspection JSUnresolvedVariable
+        // @ts-ignore
         if (navigator.globalization !== null && navigator.globalization !== undefined) { // Phonegap browser detection
-            // noinspection JSUnresolvedFunction,JSUnresolvedVariable
+            // @ts-ignore
             navigator.globalization.getPreferredLanguage (
-                language => language |> successCB,
-                error => error |> errorCB
+                language => successCB(language),
+                error => errorCB(error)
             );
         } else if (window.navigator.language !== null && window.navigator.language !== undefined) { //Normal browser detection
             successCB(window.navigator.language);
@@ -142,7 +139,7 @@ export default class JsI18n {
      * @param translations {object}
      */
     addLocale(locale, translations) {
-        this.#locales[locale.toString()] = translations
+        this.locales[locale.toString()] = translations
     }
 
     /**
@@ -151,7 +148,7 @@ export default class JsI18n {
      * @param locale {string}
      */
     setLocale(locale) {
-        this.#locale = locale
+        this.locale = locale
     }
 
     /**
@@ -160,7 +157,7 @@ export default class JsI18n {
      * @param key {string}
      */
     t(key) {
-        const translations = this.#locales[this.#locale]
+        const translations = this.locales[this.locale]
         if (translations) {
             return translations[key.toString()]
         }
