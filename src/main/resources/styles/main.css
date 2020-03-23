@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;800&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+}
+:root {
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    --select-country-background: #ebebeb;
+    --select-country-border: #969696;
+}
+@media (prefers-color-scheme: dark) {
+    :root {
+        background-color: black;
+        color: white;
+        --select-country-background: #0a0a0a;
+        --select-country-border: #3c3c3c;
+    }
+    :root a, :root select {
+        color: white;
+    }
+    :root a:hover {
+        color: dimgray;
+    }
+}
+html, body {
+    height: 100%;
+}
+@media (min-width: 1200px) {
+    body {
+        font-size: 16px;
+    }
+}
+@media (max-width: 1200px) {
+    body {
+        font-size: 12px;
+    }
+}
+body {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 2fr;
+}
+@media (min-width: 1200px) {
+    #container-data {
+        padding: 5em;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+    #container-data > div:not(:first-child) {
+        margin-left: 3em;
+    }
+}
+@media (max-width: 1200px) {
+    #container-data {
+        padding: 2em 1em;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: 0.85em;
+    }
+    #container-data > div:not(:first-child) {
+        margin-top: 2.25em;
+    }
+    #container-data * {
+        margin-left: 0 !important;
+    }
+}
+#container-data > div {
+    min-width: 10%;
+    max-width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 1em;
+    column-gap: 0.5em;
+    font-size: 1.5em;
+}
+#container-data > div img {
+    width: 5em;
+    grid-column: span 2;
+}
+#container-data > div span:last-child {
+    margin-left: 0.35em;
+    font-weight: bold;
+}
+#container-location-switcher {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#container-location-switcher select#select-country {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    width: 100%;
+    position: relative;
+    border: none;
+    border-bottom: solid var(--select-country-border) 2px;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    background: var(--select-country-background);
+    padding: 0.5em 6em 0.5em 0.5em;
+    text-align: left;
+    font-size: 1.25em;
+}
+#container-update {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end;
+}
+@media (max-width: 1200px) {
+    #container-update {
+        align-items: center;
+    }
+}
+#container-update #data-update {
+    margin-left: 0.35em;
+    font-weight: bold;
+}
+#container-footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 2em;
+    text-align: center;
+    font-size: 0.75em;
+    font-family: monospace;
+}
+#container-footer span:not(:first-child) {
+    margin-top: 1em;
+}
+a {
+    color: black;
+}
+a:hover {
+    color: dimgray;
+}
