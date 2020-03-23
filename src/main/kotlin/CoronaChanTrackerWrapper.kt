@@ -5,6 +5,7 @@ import io.ktor.client.statement.readText
 import models.LatestData
 import models.LatestRespPayload
 import models.Location
+import kotlin.js.Date
 
 object CoronaChanTrackerWrapper {
     private val client = HttpClient()
@@ -21,5 +22,11 @@ object CoronaChanTrackerWrapper {
 
     suspend fun getForLocation(countryCode: String): Location {
         return request<Location>("$API_URL/locations?country_code=$countryCode")
+    }
+
+    suspend fun getLastUpdate(): Date {
+        val url = "https://api.github.com/repos/CSSEGISandData/COVID-19/commits/master"
+        val resp = request<dynamic>(url)
+        return Date((resp["commit"]["author"]["date"]).toString())
     }
 }

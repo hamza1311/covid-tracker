@@ -9,6 +9,11 @@ import kotlin.browser.document
 
 suspend fun main() {
     Presenter.presentForGlobal()
+
+    val lastUpdate = CoronaChanTrackerWrapper.getLastUpdate()
+    document.querySelector("#data-update")?.textContent =
+        "${lastUpdate.toLocaleDateString()}, ${lastUpdate.toLocaleTimeString()}"
+
     val select = document.querySelector("#select-country") as HTMLSelectElement
     countries.forEach {
         (document.createElement("option") as HTMLOptionElement).apply {
