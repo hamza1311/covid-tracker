@@ -1,6 +1,7 @@
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import org.w3c.dom.HTMLOptionElement
+import kotlinx.html.dom.create
+import kotlinx.html.js.option
 import org.w3c.dom.HTMLSelectElement
 import org.w3c.dom.get
 import utils.Presenter
@@ -16,10 +17,9 @@ suspend fun main() {
 
     val select = document.querySelector("#select-country") as HTMLSelectElement
     countries.forEach {
-        (document.createElement("option") as HTMLOptionElement).apply {
-            innerText = "${it.key} - ${it.value}"
-            select.appendChild(this)
-        }
+        select.appendChild(document.create.option {
+            text("${it.key} - ${it.value}")
+        })
     }
 
     select.addEventListener("change", {
