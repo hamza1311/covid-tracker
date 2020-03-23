@@ -1,24 +1,35 @@
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import org.w3c.dom.HTMLOptionElement
 import org.w3c.dom.HTMLSelectElement
-import org.w3c.dom.HTMLSpanElement
+import org.w3c.dom.get
+import utils.Presenter
 import utils.countries
 import kotlin.browser.document
 
-fun getSpanElement(selector: String) = document.querySelector(selector) as HTMLSpanElement
-
 suspend fun main() {
-    val data = CoronaChanTrackerWrapper.getLatest()
-    getSpanElement("#data-active").textContent = data.confirmed.toString()
-    getSpanElement("#data-recoveries").textContent = data.recovered.toString()
-    getSpanElement("#data-deaths").textContent = data.deaths.toString()
-    val pk = CoronaChanTrackerWrapper.getForLocation("PK")
-    console.log(pk)
-
+    Presenter.presentForGlobal()
     val select = document.querySelector("#select-country") as HTMLSelectElement
-
     countries.forEach {
-        val node = document.createElement("option") as HTMLOptionElement
-        node.innerText = "${it.key} - ${it.value}"
-        select.appendChild(node)
+        (document.createElement("option") as HTMLOptionElement).apply {
+            innerText = "${it.key} - ${it.value}"
+            select.appendChild(this)
+        }
     }
+
+    select.addEventListener("change", {
+        val text = select.selectedOptions[0]?.textContent
+        if (text == null) {
+            console.log("NOOOOOOOOOOO")
+        }
+
+        if (text!!.startsWith("XX")) {
+            // I probably shouldn't be using it but I'm not aware of any better way to do it that
+            GlobalScope.launch { Presenter.presentForGlobal() }
+        } else {
+            val code = text.split("-")[0].trim()
+            // Again, I probably shouldn't be using it but its the only way
+            GlobalScope.launch { Presenter.presentForLocal(code) }
+        }
+    })
 }
