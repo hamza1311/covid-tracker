@@ -85,7 +85,7 @@ suspend fun main() {
             +"Version 1.5 | 2020 Benjamin Dupont & Muhammad Hamza | "
             a {
                 href = "https://github.com/hamza1311/covid-tracker"
-                +"https://github.com/hamza1311/covid-tracker"
+                +"Source"
             }
         }
 
